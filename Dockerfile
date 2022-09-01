@@ -13,9 +13,9 @@ RUN python3.9 -m venv /home/neshri/venv
 ENV PATH="/home/neshri/venv/bin:$PATH"
 
 # install requirements
-COPY requirements.txt .
+COPY pipfile .
 RUN pip3 install --no-cache-dir wheel
-RUN pip3 install --no-cache-dir -r requirements.txt
+RUN pip3 install --no-cache-dir -r pipfile
 
 FROM ubuntu:20.04 AS runner-image
 RUN apt-get update && apt-get install --no-install-recommends -y python3.9 python3-venv && \
